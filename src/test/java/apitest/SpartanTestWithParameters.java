@@ -72,7 +72,8 @@ public class SpartanTestWithParameters {
         nameContains|e
         When user sends GET request to /api/spartans/search
         Then response status code should be 200
-        And response content-type: application/json;charset=UTF-8
+        And response content-type: application/json;charset=UTF-8 but (my postman does not give this content!!! due to version)
+        mine gives ==>>content-type: application/json
         And "Female" should be in response payload
         And "Janette" should be in response payload
      */
@@ -80,14 +81,14 @@ public class SpartanTestWithParameters {
     @Test
     public void positiveTestWithQueryParam(){
         Response response = given().accept(ContentType.JSON)
-                .and().queryParam("gender", "Female")
+                .and().queryParam("gender","Female")
                 .and().queryParam("nameContains", "e")
                 .when().get("/api/spartans/search");
 
         //verify status code
         assertEquals(response.statusCode(),200);
         //verify content-type
-        assertEquals(response.contentType(),"application/json;charset=UTF-8");
+        assertEquals(response.contentType(),"application/json");
         //verify Female in the response
         assertTrue(response.body().asString().contains("Female"));
         //verify Janette in the response
@@ -97,6 +98,9 @@ public class SpartanTestWithParameters {
 
     @Test
     public void positiveTestWithQueryParamWithMaps(){
+
+        //***When we key/value structure to remember <<MAP>>!!!!
+
         //create a map and add query parameters
         Map<String,Object> queryMap = new HashMap<>();
         queryMap.put("gender","Female");
@@ -110,13 +114,21 @@ public class SpartanTestWithParameters {
         //verify status code
         assertEquals(response.statusCode(),200);
         //verify content-type
-        assertEquals(response.contentType(),"application/json;charset=UTF-8");
+        assertEquals(response.contentType(),"application/json");
         //verify Female in the response
         assertTrue(response.body().asString().contains("Female"));
         //verify Janette in the response
         assertTrue(response.body().asString().contains("Janette"));
 
+        /*The different is between above the two coding/ last two different test case ; First We pass queryParam key&value
+        structure queryParam method, second;we use queryParams and we put key&value in one Map and passed the (queryMap) in
+        queryParams method to structure
+        look below ;
 
+            Response response = given().accept(ContentType.JSON)
+                .and().queryParams(queryMap)
+                .when().get("/api/spartans/search");
+        */
 
 
 
