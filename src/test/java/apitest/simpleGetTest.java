@@ -70,6 +70,7 @@ public class simpleGetTest {
 
     @Test
     public void test4(){
+        //request
         Response response = given().accept(ContentType.JSON)
                             .when().get(hrUrl + "/2");
 
