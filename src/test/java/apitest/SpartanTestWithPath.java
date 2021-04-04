@@ -13,9 +13,10 @@ import static org.testng.Assert.assertEquals;
 
 public class SpartanTestWithPath {
 
-    @BeforeClass
+    @BeforeClass      //If we dont want to copy&paste @BeforeClass everytime; we create TestBase and extend
     public void beforeclass(){
-        baseURI="http://3.80.189.73:8000";
+
+        baseURI="http://34.228.41.120:8000";
     }
 
     /*
@@ -23,12 +24,12 @@ public class SpartanTestWithPath {
    And path param id is 10
    When user sends a get request to "api/spartans/{id}"
    Then status code is 200
-   And content-type is "application/json;charset=UTF-8"
+   And content-type is "application/json"
    And response payload values match the following:
            id is 10,
-           name is "Lorenza",
+           name is "Valentin",
            gender is "Female",
-           phone is 3312820936
+           phone is 2565464565
     */
 
     @Test
@@ -38,10 +39,10 @@ public class SpartanTestWithPath {
                 .when().get("/api/spartans/{id}");
 
         assertEquals(response.statusCode(),200);
-        assertEquals(response.contentType(),"application/json;charset=UTF-8");
+        assertEquals(response.contentType(),"application/json");
 
         //response.prettyPrint();
-        //printing each key value in the json body/payload
+        //printing each key value in the json body/payload (how can we reach the json value)
         System.out.println(response.path("id").toString());
         System.out.println(response.path("name").toString());
         System.out.println(response.body().path("gender").toString());
@@ -60,9 +61,9 @@ public class SpartanTestWithPath {
 
         //assert one by one
         assertEquals(id,10);
-        assertEquals(name,"Lorenza");
+        assertEquals(name,"Valentin");
         assertEquals(gender,"Female");
-        assertEquals(phone,3312820936l);
+        assertEquals(phone,2565464565l);
 
     }
 
