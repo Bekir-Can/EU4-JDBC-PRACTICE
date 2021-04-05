@@ -46,7 +46,7 @@ public class SpartanTestWithJsonPath {
         assertEquals(id,11);
         assertEquals(name,"Berry K");
 
-        //assign response to jsonpath
+        //assign response to jsonpath(we put all inform inside the json path object)
         JsonPath jsonPath = response.jsonPath();
 
         int idJson = jsonPath.getInt("id");
