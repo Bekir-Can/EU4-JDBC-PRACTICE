@@ -20,7 +20,7 @@ public class hrApiWithPath {
     }
 
     @Test
-    public void getCountriesWithPath(){
+    public void getCountriesWithPath(){//real test producers
         Response response = given().accept(ContentType.JSON)
                 .and().queryParam("q", "{\"region_id\":2}")
                 .when().get("/countries");
@@ -46,7 +46,7 @@ public class hrApiWithPath {
         System.out.println("countryNames = " + countryNames);
 
         //assert that all regions'ids are equal to 2
-        List<Integer> regionIDs = response.path("items.region_id");
+        List<Integer> regionIDs = response.path("items.region_id");//real test producers
 
         for (int regionID : regionIDs) {
             System.out.println(regionID);
@@ -55,7 +55,7 @@ public class hrApiWithPath {
     }
 
     @Test
-    public void test2(){
+    public void test2(){ //real test producers
         Response response = given().accept(ContentType.JSON)
                 .and().queryParam("q","{\"job_id\":\"IT_PROG\"}")
                 .when().get("/employees");
@@ -65,7 +65,7 @@ public class hrApiWithPath {
         assertTrue(response.body().asString().contains("IT_PROG"));
 
         //makes sure we have only IT_PROG as a job_id
-        List<String> jobIDs = response.path("items.job_id");
+        List<String> jobIDs = response.path("items.job_id");//real test producers
 
         for (String jobID : jobIDs) {
             System.out.println("jobID = " + jobID);
