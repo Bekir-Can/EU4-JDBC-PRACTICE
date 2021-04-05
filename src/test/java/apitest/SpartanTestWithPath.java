@@ -73,9 +73,9 @@ public class SpartanTestWithPath {
         Response response = given().accept(ContentType.JSON)
                         .when().get("/api/spartans");
 
-        assertEquals(response.statusCode(),200);
+        assertEquals(response.statusCode(),200);//We must check the status code always
         //verify content type
-        assertEquals(response.getHeader("Content-Type"),"application/json");
+        assertEquals(response.getHeader("Content-Type"),"application/json"); //to prove some headers exist
 
         int firstId = response.path("id[0]");
         System.out.println("firstId = " + firstId);
@@ -83,18 +83,18 @@ public class SpartanTestWithPath {
         String firstName = response.path("name[0]");
         System.out.println("firstName = " + firstName);
 
-        String lastFirstName = response.path("name[-2]");
+        String lastFirstName = response.path("name[-1]");
         System.out.println("lastFirstName = " + lastFirstName);
 
         int lastId = response.path("id[-1]");
         System.out.println("lastId = " + lastId);
 
         //print all names of spartans
-        List<String> names = response.path("name");
-        System.out.println("names = " + names);
+        List<String> names = response.path("name");//our data type of name is String in json for now(not specify)
+        System.out.println("names = " + names);//we get the all names in a one shoot with List<String> from Postman App
 
-        List<Object> phones = response.path("phone");
-        for (Object phone : phones) {
+        List<Object> phones = response.path("phone");//we get the all phone number (not specify)
+        for (Object phone : phones) {//we iterate one by one
             System.out.println(phone);
         }
     }
