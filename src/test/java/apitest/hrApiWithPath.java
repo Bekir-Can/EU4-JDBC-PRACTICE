@@ -35,7 +35,7 @@ public class hrApiWithPath {
         String firstCountryId = response.path("items.country_id[0]");
         System.out.println("firstCountryId = " + firstCountryId);
 
-        String secondCountryName = response.path("items.country_name[-1]");
+        String secondCountryName = response.path("items.country_name[-1]");//due to [-1] jpath index
         System.out.println("secondCountryName = " + secondCountryName);
 
         String link2 =response.path("items.links[2].href[0]");
