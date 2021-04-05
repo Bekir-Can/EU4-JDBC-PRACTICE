@@ -42,8 +42,8 @@ public class hrApiParameterTests {
     @Test
     public void test2(){
         Response response = given().accept(ContentType.JSON)
-                                    .and().queryParam("q","{\"job_id\":\"IT_PROG\"}")
-                            .when().get("/employees");
+                .and().queryParam("q","{\"job_id\":\"IT_PROG\"}") //we filtered the feature
+                .when().get("/employees");
 
         assertEquals(response.statusCode(),200);
         assertEquals(response.contentType(),"application/json");
