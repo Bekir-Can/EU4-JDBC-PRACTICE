@@ -18,7 +18,7 @@ public class hrApiWithJsonPath {
     }
 
     @Test
-    public void test1(){
+    public void test1(){  //to see something related to jPath syntax
         Response response = get("/countries");
 
         //assign to jsonpath
@@ -45,14 +45,17 @@ public class hrApiWithJsonPath {
 
         //get me all email of employees who is working as IT_PROG
         List<String> firstNames = jsonPath.getList("items.findAll {it.job_id==\"IT_PROG\"}.email");
+                                                                    // if statement inside the curly braces!!!
         System.out.println(firstNames);
 
         //get me all firstname of emplyoees who is making more than 10000
         List<String> firstNames2 = jsonPath.getList("items.findAll {it.salary >10000}.first_name");
+                                                                        // if statement inside the curly braces!!!
         System.out.println(firstNames2);
 
         //get me first name of who is making highest salary
         String kingName = jsonPath.getString("items.max {it.salary}.first_name");
+                                            // if statement (condition) inside the curly braces!!!
         System.out.println("kingName = " + kingName);
 
 
