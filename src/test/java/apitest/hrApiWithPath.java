@@ -14,6 +14,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class hrApiWithPath {
+
     @BeforeClass
     public void beforeclass(){
         baseURI= ConfigurationReader.get("hr_api_url");
