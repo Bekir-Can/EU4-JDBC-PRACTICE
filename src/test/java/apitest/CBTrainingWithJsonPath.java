@@ -22,7 +22,7 @@ public class CBTrainingWithJsonPath {
     @Test
     public void test1() {
         Response response = given().accept(ContentType.JSON)
-                .and().pathParam("id", 17982)
+                .and().pathParam("id", 20222)
                 .when().get("/student/{id}");
 
         //verify status code
@@ -35,7 +35,7 @@ public class CBTrainingWithJsonPath {
         String firstName = jsonPath.getString("students.firstName[0]");
         System.out.println("firstName = " + firstName);
 
-        String lastName = jsonPath.get("students.lastName[0]");
+        String lastName = jsonPath.getString("students.lastName[0]");
         System.out.println("lastName = " + lastName);
 
         String phone = jsonPath.getString("students.contact[0].phone");
@@ -46,6 +46,7 @@ public class CBTrainingWithJsonPath {
         System.out.println("city = " + city);
         assertEquals(city, "Chicago");
 
+
         String zipCode = jsonPath.getString("students.company[0].address.zipCode");
         System.out.println("zipCode = " + zipCode);
         assertEquals(zipCode, "60606");
@@ -55,9 +56,9 @@ public class CBTrainingWithJsonPath {
 
 //        String firstname3 =response.path("students.firstName");
 //        System.out.println("firstname3 = " + firstname3);
-
-        String zipCode2 = response.path("students.company[0].address.zipCode");
-        System.out.println("zipCode2 = " + zipCode2);
+//
+//        String zipCode2 = response.path("students.company[0].address.zipCode");
+//        System.out.println("zipCode2 = " + zipCode2);
 
     }
 }
